@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","5567","test_signout","","2025-11-03","failed","2025-11-03","","test_idejongkok","",""
+"Login with valid credentials","1092","Login","","2025-11-03","passed","2025-11-03","","test_idejongkok","",""
+"","1579","test_add_product","","2025-11-03","passed","2025-11-03","","test_idejongkok","",""
+"","1699","test_delete_product","","2025-11-03","passed","2025-11-03","","test_idejongkok","",""
+"","1584","test_edit_product","","2025-11-03","passed","2025-11-03","","test_idejongkok","",""
