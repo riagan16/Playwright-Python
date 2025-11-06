@@ -1,7 +1,19 @@
 from playwright.sync_api import expect
 import allure
-from pages.login import Login
+from pages.login import Login, Signup
 from pages.home import Home, AddProductModal, EditProductModal, DeleteProduct, Logout
+
+@allure.title("Signup")
+@allure.description("Signup with valid credentials")
+@allure.severity(allure.severity_level.CRITICAL)
+def test_signup(setup):
+    signup = Signup(setup)
+    home = Home(setup)
+    
+    signup.input_email('testemail2@example.com')
+    signup.input_password('testpassword')
+    signup.click_signup()
+    home.validate_signup("Ide Jongkok's Scraping Lab", 'testemail1@example.com')
 
 @allure.title("Login")
 @allure.description("Login with valid credentials")
@@ -10,10 +22,10 @@ def test_login(setup):
     login = Login(setup)
     home = Home(setup)
     
-    login.input_email('testemail1@example.com')
+    login.input_email('testemail2@example.com')
     login.input_password('testpassword')
     login.click_login()
-    home.validate_signin()
+    home.validate_signin("Ide Jongkok's Scraping Lab", 'testemail1@example.com')
  
 @allure.title("Add Product")
 @allure.description("Add with valid data")
@@ -23,7 +35,7 @@ def test_add_product(setup):
     login = Login(setup)
     add = AddProductModal(setup)
     
-    login.input_email('testemail1@example.com')
+    login.input_email('testemail2@example.com')
     login.input_password('testpassword')
     login.click_login()
     
@@ -45,7 +57,7 @@ def test_edit_product(setup):
     login = Login(setup)
     edit = EditProductModal(setup)
     
-    login.input_email('testemail1@example.com')
+    login.input_email('testemail2@example.com')
     login.input_password('testpassword')
     login.click_login()
     
@@ -66,7 +78,7 @@ def test_delete_product(setup):
     login = Login(setup)
     delete = DeleteProduct(setup)
     
-    login.input_email('testemail1@example.com')
+    login.input_email('testemail2@example.com')
     login.input_password('testpassword')
     login.click_login()    
 
@@ -82,12 +94,12 @@ def test_logout(setup):
     login = Login(setup)
     logout = Logout(setup)  
 
-    login.input_email('testemail1@example.com')
+    login.input_email('testemail2@example.com')
     login.input_password('testpassword')
     login.click_login() 
     
     logout.click_logout()
-    logout.validate_logout('Welcome Back!')
+    logout.validate_logout('Welcome Back')
   
  # input("Press Enter to close the browser...")
     

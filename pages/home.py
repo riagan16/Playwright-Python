@@ -7,11 +7,16 @@ from locators.home import Loc, Modal
 class Home:
     def __init__(self, driver):
         self.driver = driver
-    def validate_signin(self):
+    def validate_signup(self, titleHeader, email):
+        with allure.step("Sign up validation"):
+            expect(self.driver.locator(Loc.titleHeader)).to_be_visible()
+            expect(self.driver.locator(Loc.titleHeader)).to_have_text(titleHeader)
+            expect(self.driver.locator(Loc.email)).to_contain_text(email)
+    def validate_signin(self, titleHeader, email):
         with allure.step("Sign in validation"):
             expect(self.driver.locator(Loc.titleHeader)).to_be_visible()
-            expect(self.driver.locator(Loc.titleHeader)).to_have_text("Ide Jongkok's Scraping Lab")
-            expect(self.driver.locator(Loc.email)).to_contain_text('testemail1@example.com')
+            expect(self.driver.locator(Loc.titleHeader)).to_have_text(titleHeader)
+            expect(self.driver.locator(Loc.email)).to_contain_text(email)
 
 class AddProductModal:
     def __init__(self, driver):
